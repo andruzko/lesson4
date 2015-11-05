@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'sessions/login'
 
   get 'sessions/logout'
+  
+  get 'posts' => 'posts#userallposts', as: 'userallposts'
+
   post 'sessions' => 'sessions#create'
 
   get 'registration' => 'users#new', as: 'registration'
