@@ -8,13 +8,17 @@
 </head>
 <body>
   <%= link_to 'На головну', root_path %>
-<% if current_user %>
-<%= link_to 'Вихід', sessions_logout_path %>
-<%= link_to current_user.name, userallposts_path %>
-<% else %>
-<%= link_to 'Реєстрація', registration_path %>
-<%= link_to 'Вхід', sessions_login_path %>
-<% end %>
+  <% if current_user %>
+    <%= link_to 'Вихід', sessions_logout_path %>
+    <%= link_to current_user.name, userallposts_path %>
+  <% else %>
+    <%= link_to 'Реєстрація', registration_path %>
+    <%= link_to 'Вхід', sessions_login_path %>
+  <% end %>
+  <%= form_tag(posts_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Знайти", :name => nil %>
+  <% end %>
 <%= yield %>
 
 </body>
