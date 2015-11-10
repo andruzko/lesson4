@@ -1,0 +1,28 @@
+.container
+  .content
+    .main
+      - flash.each do |key, value|
+        %div {:class => "#{flash_class(key)}"}= value
+        - end
+      .row
+        .col-xs-9
+        = link_to 'New Post', new_post_path, class: "btn btn-success"
+    %h1 Listing Posts
+    %table.table table-striped table-bordered table-condensed
+      %thead
+        %tr
+          %th Title
+          %th Body
+          %th Tag
+          %th User
+          %th{:colspan => "3"} Actions
+      %tbody
+        - @posts.each do |post|
+          %tr
+            %td= post.title
+            %td= post.body
+            %td= post.tag
+            %td= User.find(post.user_id).name
+            %td= link_to 'Show', post, class: "btn btn-small"
+            %td= link_to 'Edit', edit_post_path(post), class: "btn btn-small
+            %td= link_to 'Destroy', post, class: "btn btn-small btn-danger", method: :delete, data: { confirm: 'Are you sure?' }
