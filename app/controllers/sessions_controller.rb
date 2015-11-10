@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    #session[:user_id] = nill
     reset_session
     redirect_to root_path
   end
