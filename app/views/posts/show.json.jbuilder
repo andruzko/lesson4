@@ -1,1 +1,2 @@
-json.extract! @post, :id, :title, :body, :tag, :user_id, :created_at, :updated_at
+json.extract! @post, :id, :title, :body, :tag, :created_at
+json.user_name User.find(@post.user_id).name
