@@ -22,8 +22,8 @@
         <td><%= @post.body %></td>
         <td><%= @post.tag %></td>
         <td><%= User.find(@post.user_id).name %></td>
-        <td><%= link_to 'Back', posts_path, class: "btn btn-small" %></td>
-        <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-small" %></td>
+        <td><%= link_to 'Back', posts_path, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-info" %></td>
       </tr>
   </tbody>
 </table>
