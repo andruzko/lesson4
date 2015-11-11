@@ -10,12 +10,10 @@
   <%= render 'shared/navigation' %>
   <div id="main-container" class="container">
     <% if current_user %>
-      <% if (session[:counter] += 1) % 2 == 0 %>
- <script>
-sweetAlert( "Привет" );
-</script>
-      <% else %>
-        <%= session[:counter] % 10 %>
+      <% if (session[:counter] += 1) % 10 == 0 %>
+        <script>
+          alert('learn with GeekHub');
+        </script>
       <% end%>
     <% end %>
     <%= yield %>
