@@ -1,8 +1,13 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  validates :title, :body, :tag, presence: true
+  has_many :comments
+  has_many :tags, through: :post_tags
+  has_many :post_tags
+
+  validates :title, :body, user:, presence: true
   validates :title, uniqueness: true
-  validates :title, length: { in: 5..100 }
+  validates :title, length: { in: 5..140 }
+  validates :body, length: { minimum: 140 }
 
   def self.search(query)
   # where(:title, query) -> This would return an exact match of the query
