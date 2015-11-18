@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if params[:search]
       @posts = Post.search(params[:search])
     else
-      @posts = Post.all
+      @posts = Post.all.newest
     end
   end
 
@@ -100,6 +100,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :tag).merge(user_id: current_user.id)
+      params.require(:post).permit(:title, :body).merge(user_id: current_user.id)
     end
 end
